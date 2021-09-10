@@ -10,19 +10,16 @@ import Foundation
 
 // MARK: - UserModal
 struct UserModal: Codable {
-    
-    let userID, firstname, lastname, email: String?
-    let password, image, creationDate, emailVerification: String?
-    let emailAccessToken, userAccessToken, disable: String?
-    
+    var id, name, email, password: String?
+    var image, authenticateToken, role, loginStatus: String?
+    var creationAt: String?
+
     enum CodingKeys: String, CodingKey {
-        case userID = "user_id"
-        case firstname, lastname, email, password, image
-        case creationDate = "creation_date"
-        case emailVerification = "email_verification"
-        case emailAccessToken = "email_access_token"
-        case userAccessToken = "user_access_token"
-        case disable
+        case id, name, email, password, image
+        case authenticateToken = "authenticate_token"
+        case role
+        case loginStatus = "login_status"
+        case creationAt = "creation_at"
     }
 }
 
@@ -52,3 +49,4 @@ extension UserModal {
         return String(data: try self.jsonData(), encoding: encoding)
     }
 }
+
